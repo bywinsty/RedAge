@@ -708,7 +708,6 @@
   
         .pl2 
           .desc 
-            span 
             display: flex
             flex-direction: column
             @include fluid("margin-bottom", 15)
@@ -879,15 +878,15 @@
       @include fluid("margin-left", 18)
   .card 
     &.lsnews .content .lc
-    .ava 
-      @include fluid("border", 2, "solid #A20000")
-      @include fluid("padding-top", 10)
-      @include fluid("margin-right", 20)
-      @include fluid("width", 120)
-      @include fluid("height", 160)
-      background-repeat: no-repeat
-      background-position: center
-      background-size: cover
+      .ava
+        @include fluid("border", 2, "solid #A20000")
+        @include fluid("padding-top", 10)
+        @include fluid("margin-right", 20)
+        @include fluid("width", 120)
+        @include fluid("height", 160)
+        background-repeat: no-repeat
+        background-position: center
+        background-size: cover
     &.gov .content .desc-bl
       .ava 
         @include fluid("border", 8, "solid #1E262F")
@@ -1517,5 +1516,3 @@
       
   
       @include fluid("padding", 10)
-    
-  
