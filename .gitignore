@@ -10,7 +10,16 @@
 /attachments.txt
 /.listcache
 /client_packages/.listcache
-/settings/mainDB.json
+
+# Local server settings; generated and maintained by the server;
+/settings/donatePack.json
+/settings/donatesPremiumData.json
+/settings/donationsSettings.json
+/settings/fractionDataMats.json
+/settings/lumberjackPrice.json
+/settings/moneySettings.json
+/settings/pricesSettings.json
+/settings/serverSettings.json
 
 # Local database backups;
 /backups/**
