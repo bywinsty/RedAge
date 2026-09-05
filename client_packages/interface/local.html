@@ -12,16 +12,27 @@
 
 		document.cloud = "https://cdn-ra3.ragemp.pro/cloud/";
 
+		const loadBundle = () => {
+			if (window.__redageBundleLoaded)
+				return;
+
+			window.__redageBundleLoaded = true;
+			const script = document.createElement('script');
+			script.type = 'application/javascript';
+			script.src = `${buildDirectory}/bundle.js`;
+			document.body.append(script);
+		};
+
 		const stylesheet = document.createElement('link');
 		stylesheet.rel = 'stylesheet';
 		stylesheet.type = 'text/css';
 		stylesheet.href = `${buildDirectory}/bundle.css`;
+		stylesheet.onload = loadBundle;
+		stylesheet.onerror = () => {
+			console.error(`[RedAge CEF] Failed to load ${stylesheet.href}`);
+			loadBundle();
+		};
 		document.head.append(stylesheet);
-
-		const script = document.createElement('script');
-		script.type = 'application/javascript';
-		script.src = `${buildDirectory}/bundle.js`;
-		document.body.append(script);
 	</script>
 </body>
 </html>
