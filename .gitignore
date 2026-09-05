@@ -1,24 +1,51 @@
-fakecars.txt
-install.txt
-mainDB.txt
-package-lock.json
+# Local server/runtime files;
+/fakecars.txt
+/install.txt
+/mainDB.txt
+**/server_exceptions.txt
+**/server_logs.txt
+**/coords.txt
+/StatsClientToServer.txt
+/StatsServerToClient.txt
+/attachments.txt
+/.listcache
+/client_packages/.listcache
 
-backups/*.sql
-database/serverconfigured.sql
-client_packages/game_resources/dlcpacks/*
-!client_packages/game_resources/dlcpacks/dlcpacks.txt
-.listcache
+# Local server settings; generated and maintained by the server;
+/settings/donatePack.json
+/settings/donatesPremiumData.json
+/settings/donationsSettings.json
+/settings/fractionDataMats.json
+/settings/lumberjackPrice.json
+/settings/moneySettings.json
+/settings/pricesSettings.json
+/settings/serverSettings.json
 
-server_exceptions.txt
-server_logs.txt
-coords.txt
-settings/mainDB.json
-client_packages/interface/build/bundle.js.map
-client_packages/interface/build/bundle.js
-client_packages/interface/build/bundle.css.map
-client_packages/interface/build/bundle.css
-client_packages/interface/index.html
-client_packages/main.js
+# Local database backups;
+/backups/**
+!/backups/_txt
+/database/serverconfigured.sql
 
-dlcpacks/*
-client_packages/DISABLE_ENCRYPTION_LIST
+# Generated analysis output;
+/graphify-out/
+
+# Generated server catalogs;
+/json/*.json
+/json/itemsInfo.js
+!/json/_txt
+
+# Generated client artifacts;
+/client_packages/interface/build/
+/client_packages/interface/buildru/
+/client_packages/interface/builden/
+/client_packages/interface/index.html
+/client_packages/interface/index.ru.html
+/client_packages/interface/index.en.html
+/client_packages/main.js
+/client_packages/main.js.map
+
+# Runtime/downloaded resources;
+/client_packages/game_resources/dlcpacks/*
+!/client_packages/game_resources/dlcpacks/dlcpacks.txt
+/dlcpacks/*
+/client_packages/DISABLE_ENCRYPTION_LIST

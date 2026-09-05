@@ -31,22 +31,26 @@
 				};
 			}
 						
-            const loadRes = (url) => {
-                document.cloud = url + "/cloud/";
-                onLoadRes('script', url + "/build/bundle.js");
-            }
+			const buildDirectories = { main: 'build', ru: 'buildru', en: 'builden' };
+			const requestedLanguage = new URLSearchParams(window.location.search).get('lang');
+			const buildDirectory = buildDirectories[requestedLanguage] || buildDirectories.main;
+
+			const loadRes = (url) => {
+				document.cloud = url + "/cloud/";
+				onLoadRes('script', url + `/${buildDirectory}/bundle.js`);
+			}
 
 
 			console.log('Start')
 
-            onLoadRes('link', "https://cdn-ra3.ragemp.pro/build/bundle.css", () => {
-                    loadRes ("https://cdn-ra3.ragemp.pro")
-                }, (element) => {
+			onLoadRes('link', `https://cdn-ra3.ragemp.pro/${buildDirectory}/bundle.css`, () => {
+					loadRes ("https://cdn-ra3.ragemp.pro")
+				}, (element) => {
 				    console.log('Fail Rus Cdn')
-                    onLoadRes('link', "https://cdn-ra3.ragemp.pro/build/bundle.css", () => {
-                            loadRes ("https://cdn-ra3.ragemp.pro")
-                        }, (element) => {
-				            console.log('Fail Global Cdn')
+					onLoadRes('link', `https://cdn.ragemp.pro/${buildDirectory}/bundle.css`, () => {
+							loadRes ("https://cdn.ragemp.pro")
+						}, (element) => {
+						    console.log('Fail Global Cdn')
                         }
                     )
                 }

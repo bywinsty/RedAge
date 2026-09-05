@@ -11,6 +11,7 @@ mp.events.callRemote = (eventName, ...handler) => {
 
 require('./lang/index')
 require('./debug/index')
+require('./debug/gen9')
 
 global.soundApi = {};
 global.chatActive = false;

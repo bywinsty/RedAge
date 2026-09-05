@@ -3,10 +3,25 @@
 <head>
 	<meta charset='utf8'>
 	<meta name='viewport' content='width=device-width'>    
-	<link rel="stylesheet" type="text/css" href="build/bundle.css">
 </head>
 <body>
-	<script>document.cloud = "https://cdn-ra3.ragemp.pro/cloud/"</script>
-	<script type="application/javascript" src="build/bundle.js"></script>
+	<script>
+		const buildDirectories = { main: 'build', ru: 'buildru', en: 'builden' };
+		const requestedLanguage = new URLSearchParams(window.location.search).get('lang');
+		const buildDirectory = buildDirectories[requestedLanguage] || buildDirectories.main;
+
+		document.cloud = "https://cdn-ra3.ragemp.pro/cloud/";
+
+		const stylesheet = document.createElement('link');
+		stylesheet.rel = 'stylesheet';
+		stylesheet.type = 'text/css';
+		stylesheet.href = `${buildDirectory}/bundle.css`;
+		document.head.append(stylesheet);
+
+		const script = document.createElement('script');
+		script.type = 'application/javascript';
+		script.src = `${buildDirectory}/bundle.js`;
+		document.body.append(script);
+	</script>
 </body>
 </html>
