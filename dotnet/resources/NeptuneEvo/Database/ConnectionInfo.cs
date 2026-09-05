@@ -14,7 +14,7 @@ namespace NeptuneEvo.Database
         {
             this.Name = connectionName;
             this.ProviderName = "MySql.Data.MySqlClient";
-            this.ConnectionString = $"SERVER={host};DATABASE={database};UID={user};PASSWORD={password};SSLMode=none;";
+            this.ConnectionString = $"SERVER={host};DATABASE={database};UID={user};PASSWORD={password};SSLMode=none;CharSet=utf8mb4;";
         }
     }
 }

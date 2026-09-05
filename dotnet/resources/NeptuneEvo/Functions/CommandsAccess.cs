@@ -594,7 +594,11 @@ namespace NeptuneEvo.Functions
             AdminCommands.Stt
         };
         
-        public static string[] LoginsDirector = new string[3] { "source1488", "sokolyansky", "qwelpy" };
+        // Список логинов для команд из LoginAccess.
+        // Если точный логин есть в этом массиве, проверка ниже разрешает такие команды.
+        // Сейчас массив пустой: доступ определяется через AdminAccess или VipAccess.
+        // Для использования добавьте сюда точное значение accountData.Login.
+        public static string[] LoginsDirector = new string[] { };
 
         [ServerEvent(Event.ResourceStart)]
         public void Event_ResourceStart()
@@ -691,7 +695,7 @@ namespace NeptuneEvo.Functions
 
             if (AdminAccess.ContainsKey(cmd) && characterData.AdminLVL >= AdminAccess[cmd]) return true;
             if (VipAccess.ContainsKey(cmd) && accountData.VipLvl >= VipAccess[cmd]) return true;
-            if (LoginAccess.Contains(cmd) && (LoginsDirector.Contains(accountData.Login) || Main.ServerNumber == 0)) return true;
+            if (LoginAccess.Contains(cmd) && LoginsDirector.Contains(accountData.Login)) return true;
 
             Notify.Send(player, NotifyType.Error, NotifyPosition.BottomCenter, $"Недостаточно прав", 3000);
             return false;
