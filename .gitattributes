@@ -1,0 +1,3 @@
+# Preserve each file's existing bytes and line endings.
+# Git must not normalize CRLF/LF when checking out or staging files.
+* -text

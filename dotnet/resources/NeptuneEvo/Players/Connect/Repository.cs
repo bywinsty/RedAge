@@ -97,14 +97,6 @@ namespace NeptuneEvo.Players.Connect
             }
         }
 
-        private static List<string> WhiteLogins = new List<string>()
-        {
-           "source1488", "sokolyansky"
-        };
-        private static bool IsWhiteLogin(string login)
-        {
-            return WhiteLogins.Contains(login.ToLower());
-        }
         public static async Task PlayerToAuntidication(ExtPlayer player)
         {
             if (player.IsAccountData()) return;
@@ -116,14 +108,9 @@ namespace NeptuneEvo.Players.Connect
             
             Log.Write($"{sessionData.Name} ({sessionData.SocialClubName} | {sessionData.RealSocialClub}) joining the server.");
 
-            /*if (!IsWhiteLogin(auntificationData.Login))
-            {
-                Trigger.ClientEvent(player, "client.auth", -1);
-                Trigger.ClientEvent(player, "client.closeAll");
-                Notify.Send(player, NotifyType.Error, NotifyPosition.Center, $"В данный момент на сервере ведутся технические работы, следите за новостями в оф. дискорде.", 1000 * 60);
-                return;
-            }*/
-            
+            // WhiteList.Check определяет, может ли авторизация продолжиться.
+            // При false подключение прекращается. Настраивайте список разрешённых
+            // подключений в WhiteList и ACL, а не добавляйте исключения в этот метод.
             if (!WhiteList.Check(player, auntificationData.Login))
                 return;
             

@@ -2,14 +2,49 @@ import { writable } from 'svelte/store';
 
 window.accountStore = {};
 
-export const accountData = writable(JSON.parse('{"Login":"sokolyansky","SocialClub":"Jonatan_Keri","Redbucks":0,"Vip":0,"VipDate":"2021-08-15T23:17:56","Unique":"packages_9_0","LastSelectCharUUID":0,"Subscribe":false,"charsSlot":[-1,-1,-2,-2,-2,-2,-2,-2,-2],"chars":{}}'));
-//export const accountData = writable({});
+// Хранилище содержит данные аккаунта после успешной авторизации.
+// До этого оно пустое; данные передаются сервером через обработчик авторизации ниже.
+const createEmptyAccountData = () => ({
+    Login: "",
+    SocialClub: "",
+    Redbucks: 0,
+    Vip: 0,
+    VipDate: "",
+    Unique: "",
+    LastSelectCharUUID: -1,
+    Subscribe: false,
+    Email: "",
+    Ga: "",
+    charsSlot: [],
+    chars: {},
+});
+
+const normalizeAccountData = (value) => {
+    const data = value && typeof value === "object" && !Array.isArray(value)
+        ? value
+        : {};
+
+    return {
+        ...createEmptyAccountData(),
+        ...data,
+        charsSlot: Array.isArray(data.charsSlot) ? data.charsSlot : [],
+        chars: data.chars && typeof data.chars === "object" && !Array.isArray(data.chars)
+            ? data.chars
+            : {},
+    };
+};
+
+export const accountData = writable(createEmptyAccountData());
 window.accountStore.accountData = (value) => {
-    value = JSON.parse (value);
-    accountData.set (value);
+    try {
+        accountData.set(normalizeAccountData(JSON.parse(value)));
+    } catch (error) {
+        console.error("Unable to load account data", error);
+        accountData.set(createEmptyAccountData());
+    }
 }
 
-let localAccountData = {};
+let localAccountData = createEmptyAccountData();
 accountData.subscribe(value => {
 	localAccountData = value;
 }); 

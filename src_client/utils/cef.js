@@ -14,14 +14,28 @@ let main_browser = null;
 
 //package://interface/local.html
 
-const getInterfaceUrl = (serverId) => {
-	if (serverId === 0)
-		return 'package://interface/local.html';
-	else
-		return 'package://interface/cloud.html';
+const normalizeInterfaceLanguage = (language, fallback) => {
+	if (typeof language !== 'string')
+		return fallback;
+
+	const normalized = language.toLowerCase();
+	return normalized === 'en' || normalized === 'ru' || normalized === 'main'
+		? normalized
+		: fallback;
+};
+
+const getInterfaceUrl = (serverId, language) => {
+	const isLocal = Number(serverId) === 0;
+	const selectedLanguage = normalizeInterfaceLanguage(language, isLocal ? 'main' : 'ru');
+	const query = selectedLanguage === 'main' ? '' : `?lang=${selectedLanguage}`;
+
+	return isLocal
+		? `package://interface/local.html${query}`
+		: `package://interface/cloud.html${query}`;
 }
 
-gm.events.add('client.init', async (serverId) => {
+// Optional sixth client.init argument: interface language ('ru', 'en' or 'main').
+gm.events.add('client.init', async (serverId, serverName, donatMultiplier, donateDoubleConvert, merger, language) => {
 	mp.gui.cursor.visible = true;
 	mp.game.ui.setPauseMenuActive(false);
 
@@ -30,7 +44,7 @@ gm.events.add('client.init', async (serverId) => {
 	if (main_browser !== null)
 		main_browser.destroy();
 
-	main_browser = mp.browsers.new(getInterfaceUrl (serverId));
+	main_browser = mp.browsers.new(getInterfaceUrl(serverId, language));
 	main_browser.markAsChat();
 });
 

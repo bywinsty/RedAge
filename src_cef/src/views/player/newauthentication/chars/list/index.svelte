@@ -82,7 +82,7 @@
             <span class="auth-logout"></span>
             {$accountLogin}
         </div>
-        {#each $accountData.charsSlot as char, index}
+        {#each ($accountData.charsSlot || []) as char, index}
             <CharacterMain charid={index} char={getCharData ($accountData.chars, char, index)}  />
         {/each}
     </div>
