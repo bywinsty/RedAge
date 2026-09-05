@@ -21,9 +21,9 @@ namespace Localization
                 {
                     LangFunc.GetText(LangType.Ru, fruit, 0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1);
                 }
-                catch (Exception)
+                catch (FormatException e)
                 {
-                    Console.WriteLine(fruit);
+                    Console.WriteLine($"{fruit}: {e.Message}");
                 }
             }
         }
