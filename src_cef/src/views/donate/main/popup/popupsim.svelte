@@ -5,7 +5,6 @@
     import { charWanted, charMoney, charBankMoney } from 'store/chars'
     import {executeClient} from "api/rage";
     import {validate} from "api/validation";
-    import {numberValue} from "@/views/player/hudevo/phonenew/components/calls/addContact.svelte";
 
     let number = "";
 

@@ -1,7 +1,7 @@
 <script>
     import { translateText } from 'lang'
     import { setGroup, executeClientAsyncToGroup } from 'api/rage'
-    import { charName, FractionLVL } from 'store/chars';
+    import { charName, charFractionLVL } from 'store/chars';
     import { TimeFormat, GetTime } from 'api/moment'
     import { serverDateTime } from 'store/server'
     setGroup (".advert.");
@@ -88,7 +88,7 @@
                 <div class="line mt-auto"></div>
                 <div class="box-column">
                     <div class="weazelnews__name mt-24">{$charName}</div>
-                    <div class="weazelnews__rank">{$FractionLVL}</div>
+                    <div class="weazelnews__rank">{$charFractionLVL}</div>
                 </div>
                 <div class="line mt-24"></div>
                 <div class="weazelnews__flag"></div>

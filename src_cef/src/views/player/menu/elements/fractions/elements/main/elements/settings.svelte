@@ -2,8 +2,7 @@
     import { translateText } from 'lang'
     import { executeClientToGroup, executeClientAsyncToGroup } from "api/rage";
     import copy from 'copy-to-clipboard';
-    import { isFraction } from "@/views/player/menu/elements/fractions/index.svelte";
-    import {setPopup} from "../../../data";
+    import {setPopup, isFraction} from "../../../data";
     import { TimeFormat } from 'api/moment'
     import { format } from 'api/formatter'
 
@@ -89,7 +88,7 @@
     <div class="fractions__main_head box-between">
         <div class="box-flex">
             <span class="fractionsicon-stats"></span>
-            <div class="fractions__main_title">{translateText('player1', 'Информация')} {isFraction ? translateText('player1', 'о фракции') : translateText('player1', 'об организации')}</div>
+            <div class="fractions__main_title">{translateText('player1', 'Информация')} {isFraction() ? translateText('player1', 'о фракции') : translateText('player1', 'об организации')}</div>
         </div>
         {#if settings.isLeader}
             <div class="fractions__main_button mini" on:click={onOpenPopupSetting}>{translateText('player1', 'Настроить')}</div>
@@ -101,7 +100,7 @@
     </div>
     <div class="fractions__main_grid">
         <div class="fractions__main_element">
-            <div class="fractions_stats_title">{translateText('player1', 'Путь')} {isFraction ? translateText('player1', 'фракции') : translateText('player1', 'организации')}:</div>
+            <div class="fractions_stats_title">{translateText('player1', 'Путь')} {isFraction() ? translateText('player1', 'фракции') : translateText('player1', 'организации')}:</div>
             <div class="fractions__stats_subtitle">{settings.crimeOptions ? translateText('player1', 'Криминал') : translateText('player1', 'Закон')}</div>
         </div>
         <div class="fractions__main_element">

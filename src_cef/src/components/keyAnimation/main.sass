@@ -1,4 +1,4 @@
-@import @/views/assets/css/main.sass
+@use "@/views/assets/css/main.sass" as *
 
 .KeyAnimation
     background: rgba(255, 255, 255, 0.15)
@@ -58,7 +58,7 @@
         animation: key-info-donate 5s infinite
 
         &:hover
-            background:rgba(255,240,189,0.3)
+            background: rgba(255,240,189,0.3)
             color: rgba(255, 255, 255, 1)
 
 .box-KeyAnimation
@@ -72,4 +72,3 @@
 
     div:last-child
         @include fluid("margin-left", 18)
-            

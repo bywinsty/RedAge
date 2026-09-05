@@ -1,5 +1,4 @@
 <script>
-    import { data } from 'store/customization';
     import ListButton from './listbutton.svelte';
     import Selector from './selector/index.svelte';
     import { gender, customization, updateCharacteristic } from 'store/customization';

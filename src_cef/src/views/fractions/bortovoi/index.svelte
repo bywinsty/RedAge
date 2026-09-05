@@ -3,7 +3,7 @@
     import './main.sass'
     import './assets/style.css'
     import { TimeFormat, GetTime } from 'api/moment'
-    import { charName, FractionLVL } from 'store/chars';
+    import { charName, charFractionLVL } from 'store/chars';
     import { serverDateTime } from 'store/server'
     
     import Search from './elements/search/search.svelte'
@@ -67,7 +67,7 @@
                 <div class="line mt-auto"></div>
                 <div class="box-column">
                     <div class="policecomputer__name mt-24">{$charName}</div>
-                    <div class="policecomputer__rank">{$FractionLVL}</div>
+                    <div class="policecomputer__rank">{$charFractionLVL}</div>
                 </div>
                 <div class="line mt-24"></div>
                 <div class="policecomputer__flag"></div>

@@ -1,4 +1,5 @@
-@import @/views/assets/css/main.sass
+@use "sass:math"
+@use "@/views/assets/css/main.sass" as *
 
 .newhud__notification
     position: absolute
@@ -24,7 +25,7 @@
     .newhud__notification_progress_box
         .newhud__notification_progress
             position: relative
-            @include fluid("width", 210 / 2)
+            @include fluid("width", math.div(210, 2))
             @include fluid("height", 2)
             background: rgba(253,255,252,.15)
             @include fluid("margin-top", 15)

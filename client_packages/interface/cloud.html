@@ -18,8 +18,6 @@
                 }
 				
 
-				document.head.append(script);
-
 				script.onload = function() {
 					if (typeof successCallbakc === "function")
 						successCallbakc ()
@@ -29,6 +27,8 @@
 					if (typeof errorCallback === "function")
 						errorCallback ()
 				};
+
+				document.head.append(script);
 			}
 						
 			const buildDirectories = { main: 'build', ru: 'buildru', en: 'builden' };

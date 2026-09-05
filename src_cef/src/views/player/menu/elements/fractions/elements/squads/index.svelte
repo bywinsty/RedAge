@@ -1,7 +1,7 @@
 <script>
     import { translateText } from 'lang'
     import SquadsList from './squadslist.svelte'
-    import SquadSettings, {id} from './squadsettings.svelte'
+    import SquadSettings from './squadsettings.svelte'
     import SquadRanks from './squadranks.svelte'
     import SquadInfo from './squadinfo.svelte'
 

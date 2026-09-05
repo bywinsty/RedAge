@@ -1,4 +1,4 @@
-@import ../../assets/css/main
+@use "../../assets/css/main" as *
 
 #store
     position: absolute
@@ -471,7 +471,6 @@
                     font-weight: 500
                     @include fluid("font-size", 16)
                     
-                    span 
                     @include fluid("margin-bottom", 20)
 
                     span:nth-child(2) 
@@ -671,7 +670,7 @@
                 display: none
 
                 &.active
-                display: block
+                    display: block
 
                 &:last-child
                     .box-contain
