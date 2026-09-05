@@ -10,6 +10,7 @@ using Newtonsoft.Json;
 using MySqlConnector;
 using Database;
 using LinqToDB;
+using LinqToDB.Async;
 using System.Threading.Tasks;
 using NeptuneEvo.Functions;
 using System.Collections.Concurrent;

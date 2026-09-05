@@ -19,6 +19,7 @@ using NeptuneEvo.Character.Models;
 using NeptuneEvo.Character;
 using Database;
 using LinqToDB;
+using LinqToDB.Async;
 using System.Threading.Tasks;
 using NeptuneEvo.Fractions.Models;
 using NeptuneEvo.Fractions.Player;

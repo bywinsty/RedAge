@@ -4,6 +4,7 @@ using System.Linq;
 using Database;
 using GTANetworkAPI;
 using LinqToDB;
+using LinqToDB.Async;
 using Newtonsoft.Json;
 
 namespace NeptuneEvo.World.War.Models

@@ -13,6 +13,7 @@ using Database;
 using NeptuneEvo.Quests;
 using Newtonsoft.Json;
 using LinqToDB;
+using LinqToDB.Async;
 using System.Threading.Tasks;
 using Localization;
 using NeptuneEvo.Accounts;

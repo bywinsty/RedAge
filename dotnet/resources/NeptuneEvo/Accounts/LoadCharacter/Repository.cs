@@ -2,6 +2,7 @@
 using GTANetworkAPI;
 using NeptuneEvo.Handles;
 using LinqToDB;
+using LinqToDB.Async;
 using LinqToDB.Tools;
 using NeptuneEvo.Houses;
 using NeptuneEvo.MoneySystem;

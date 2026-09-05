@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading;
 using Database;
 using LinqToDB;
+using LinqToDB.Async;
 using NeptuneEvo.Character;
 using NeptuneEvo.Core;
 using NeptuneEvo.Functions;

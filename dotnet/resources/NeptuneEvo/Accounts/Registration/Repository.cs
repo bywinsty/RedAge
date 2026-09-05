@@ -2,6 +2,7 @@
 using GTANetworkAPI;
 using NeptuneEvo.Handles;
 using LinqToDB;
+using LinqToDB.Async;
 using MySqlConnector;
 using NeptuneEvo.Accounts.Models;
 using NeptuneEvo.Accounts.Registration.Models;

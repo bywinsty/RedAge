@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Database;
 using LinqToDB;
+using LinqToDB.Async;
 using NeptuneEvo.Chars.Models;
 using NeptuneEvo.Functions;
 using NeptuneEvo.Accounts;

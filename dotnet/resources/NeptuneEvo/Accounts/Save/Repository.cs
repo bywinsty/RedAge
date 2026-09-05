@@ -2,6 +2,7 @@
 using GTANetworkAPI;
 using NeptuneEvo.Handles;
 using LinqToDB;
+using LinqToDB.Async;
 using NeptuneEvo.Core;
 using Newtonsoft.Json;
 using Redage.SDK;

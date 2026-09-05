@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Database;
 using LinqToDB;
+using LinqToDB.Async;
 using NeptuneEvo.Accounts.Email.Confirmation.Models;
 using NeptuneEvo.Chars.Models;
 using NeptuneEvo.Handles;

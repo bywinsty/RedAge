@@ -8,8 +8,8 @@ namespace NeptuneEvo.Database
     {
         public IEnumerable<IDataProviderSettings> DataProviders => Enumerable.Empty<IDataProviderSettings>();
 
-        public string DefaultConfiguration => "MySql.Data.MySqlClient";
-        public string DefaultDataProvider => "MySql.Data.MySqlClient";
+        public string DefaultConfiguration => LinqToDB.ProviderName.MariaDB10MySqlConnector;
+        public string DefaultDataProvider => LinqToDB.ProviderName.MariaDB10MySqlConnector;
 
         private readonly IConnectionStringSettings[] _connectionStrings;
 

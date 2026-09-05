@@ -30,8 +30,8 @@ namespace NeptuneEvo.Utils.Redis
 
                 var sub = RedisInstance.GetSubscriber();
 
-                sub.Subscribe(ConfirmEmail, ConfirmEmailHandler);
-                sub.Subscribe(Global, GlobalHandler);
+                sub.Subscribe(RedisChannel.Literal(ConfirmEmail), ConfirmEmailHandler);
+                sub.Subscribe(RedisChannel.Literal(Global), GlobalHandler);
             
                 Log.Write($"Start: All ok. For server: {Main.ServerNumber}", nLog.Type.Info);
             }

@@ -33,7 +33,7 @@ namespace NeptuneEvo.Core.FakeCars
             using var sr = new StreamReader(fs);
             var lines = sr.ReadToEnd().Split(Environment.NewLine);
             foreach (var json in lines)
-                if (json.IsNullOrEmpty())
+                if (string.IsNullOrEmpty(json))
                     return;
                 else _fakeCarsRecords.Add(NAPI.Util.FromJson<FakeCarInfo>(json));
 

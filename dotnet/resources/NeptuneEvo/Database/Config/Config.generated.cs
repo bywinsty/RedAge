@@ -97,8 +97,15 @@ namespace Database
 			InitMappingSchema();
 		}
 
-		public ConfigBD(LinqToDbConnectionOptions options)
+		public ConfigBD(LinqToDB.DataOptions options)
 			: base(options)
+		{
+			InitDataContext();
+			InitMappingSchema();
+		}
+
+		public ConfigBD(DataOptions<ConfigBD> options)
+			: base(options.Options)
 		{
 			InitDataContext();
 			InitMappingSchema();

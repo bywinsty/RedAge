@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using Database;
 using LinqToDB;
+using LinqToDB.Async;
 using Localization;
 using NeptuneEvo.BattlePass.Models;
 using NeptuneEvo.Character;

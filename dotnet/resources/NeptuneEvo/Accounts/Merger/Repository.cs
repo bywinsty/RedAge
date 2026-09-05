@@ -7,6 +7,7 @@ using Database;
 using GTANetworkAPI;
 using NeptuneEvo.Handles;
 using LinqToDB;
+using LinqToDB.Async;
 using LinqToDB.Tools;
 using Localization;
 using NeptuneEvo.Chars;

@@ -14,6 +14,7 @@ using NeptuneEvo.Chars;
 using System.Threading.Tasks;
 using Database;
 using LinqToDB;
+using LinqToDB.Async;
 using System.Collections.Concurrent;
 using Localization;
 using NeptuneEvo.Accounts;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Database;
 using LinqToDB;
+using LinqToDB.Async;
 using Localization;
 using NeptuneEvo.Character;
 using NeptuneEvo.Chars;

@@ -40,8 +40,15 @@ namespace Database
 			InitMappingSchema();
 		}
 
-		public WebSiteBD(LinqToDbConnectionOptions options)
+		public WebSiteBD(LinqToDB.DataOptions options)
 			: base(options)
+		{
+			InitDataContext();
+			InitMappingSchema();
+		}
+
+		public WebSiteBD(DataOptions<WebSiteBD> options)
+			: base(options.Options)
 		{
 			InitDataContext();
 			InitMappingSchema();

@@ -2,6 +2,7 @@
 using GTANetworkAPI;
 using NeptuneEvo.Handles;
 using LinqToDB;
+using LinqToDB.Async;
 using NeptuneEvo.Character.Config.Models;
 using NeptuneEvo.Players;
 using NeptuneEvo.Players.Models;

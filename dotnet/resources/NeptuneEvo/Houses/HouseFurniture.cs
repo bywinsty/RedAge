@@ -10,6 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Database;
 using LinqToDB;
+using LinqToDB.Async;
 using Localization;
 using MySqlConnector;
 using NeptuneEvo.Accounts;

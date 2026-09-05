@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Database;
 using GTANetworkAPI;
 using LinqToDB;
+using LinqToDB.Async;
 using MySqlConnector;
 using NeptuneEvo.Chars;
 using NeptuneEvo.Handles;

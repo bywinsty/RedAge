@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Database;
 using LinqToDB;
+using LinqToDB.Async;
 using Redage.SDK;
 
 namespace NeptuneEvo.Database.Models

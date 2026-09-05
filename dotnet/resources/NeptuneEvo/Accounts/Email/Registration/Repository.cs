@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Database;
 using LinqToDB;
+using LinqToDB.Async;
 using NeptuneEvo.Accounts.Registration.Models;
 using NeptuneEvo.Handles;
 using NeptuneEvo.Players;

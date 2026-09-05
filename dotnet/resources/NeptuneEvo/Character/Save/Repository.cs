@@ -2,6 +2,7 @@
 using GTANetworkAPI;
 using NeptuneEvo.Handles;
 using LinqToDB;
+using LinqToDB.Async;
 using NeptuneEvo.Chars.Models;
 using NeptuneEvo.Core;
 using NeptuneEvo.Houses;

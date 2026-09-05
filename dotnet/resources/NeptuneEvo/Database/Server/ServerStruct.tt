@@ -1,6 +1,6 @@
 ﻿<#@ template language="C#" debug="True" hostSpecific="True"                       #>
 <#@ output extension=".generated.cs" encoding="UTF-8"                                              #>
-<#@ include file="$(LinqToDBT4MySqlTemplatesPath)LinqToDB.MySql.Tools.ttinclude" once="true" #>
+<#@ include file="$(LinqToDBT4MySqlTemplatesPath)LinqToDB.MySql.ttinclude" once="true" #>
 <#@ include file="$(LinqToDBT4MySqlTemplatesPath)PluralizationService.ttinclude" once="true" #>
 <# //@ include file="$(ProjectDir)LinqToDB.Templates\LinqToDB.MySql.Tools.ttinclude" #>
 <# //@ include file="$(ProjectDir)LinqToDB.Templates\PluralizationService.ttinclude" #>

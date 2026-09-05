@@ -13,7 +13,7 @@ namespace NeptuneEvo.Database
         public ConnectionInfo(string connectionName, string host, string user, string password, string database)
         {
             this.Name = connectionName;
-            this.ProviderName = "MySql.Data.MySqlClient";
+            this.ProviderName = LinqToDB.ProviderName.MariaDB10MySqlConnector;
             this.ConnectionString = $"SERVER={host};DATABASE={database};UID={user};PASSWORD={password};SSLMode=none;CharSet=utf8mb4;";
         }
     }

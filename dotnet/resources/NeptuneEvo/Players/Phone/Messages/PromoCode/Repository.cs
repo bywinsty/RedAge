@@ -2,6 +2,7 @@
 using System.Linq;
 using Database;
 using LinqToDB;
+using LinqToDB.Async;
 using Localization;
 using MySqlConnector;
 using NeptuneEvo.Accounts;
