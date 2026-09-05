@@ -1,13 +1,15 @@
-# Dependencies
 node_modules/
-
-# Local build output and generated directories
-/build/
-/old/
-/public/
-
-# Local IDE and helper files
-/.idea.zp
-/.vs/
-/build-interface.bat
+node_modules
+build
+build-interface.bat
+old/
+public/
+.idea.zp
+.idea/.idea.interface.dir/.idea/encodings.xml
+.idea/.idea.interface.dir/.idea/discord.xml
+.idea/.idea.interface.dir/.idea/indexLayout.xml
+.idea/.idea.interface.dir/.idea/vcs.xml
+package-lock.json
+/.vs/cef/v17
+/.vs
 /buildtest.bat

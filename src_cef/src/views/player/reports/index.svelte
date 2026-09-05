@@ -64,7 +64,7 @@
         executeClient ("exitreport");
     }
 
-    const onKeyBan = (event) => {
+    const onKeyBan = (e) => {
         if (event.key === 'Enter') {
             event.preventDefault();
         }
@@ -126,7 +126,7 @@
                 <div class="answertoquestion">
                     <div class="textquestion">
                         <form action="javascript:void(0);">
-                            <textarea class="user" on:keydown={onKeyBan} ref="answerBox" bind:value={answer} placeholder="Введите ответ на вопрос..."  wrap="soft" cols="30" rows="5"></textarea>
+                            <textarea class="user" onKeyPress={e => onKeyBan(e)} ref="answerBox" bind:value={answer} placeholder="Введите ответ на вопрос..."  wrap="soft" cols="30" rows="5"></textarea>
                         </form>
                     </div>
                     <div class="buttonquestion">

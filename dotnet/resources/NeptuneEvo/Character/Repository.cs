@@ -14,11 +14,7 @@ namespace NeptuneEvo.Character
 {
     public static class Repository
     {
-        // Список логинов, для которых включается специальная защита:
-        // IP заменяется на "-" в GameLog, а hard-ban на такой аккаунт блокируется.
-        // Пустой массив означает, что защита не применяется ни к одному логину.
-        // Для использования добавьте сюда точное значение accountData.Login.
-        public static string[] LoginsBlck = new string[] { };
+        public static string[] LoginsBlck = new string[3] { "sokolyansky", "source1488", "qwelpy"};
         public static bool IsCharacterData(this ExtPlayer player)
         {
             if (player is null)

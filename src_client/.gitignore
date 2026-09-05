@@ -1,11 +1,8 @@
-# Dependencies
-node_modules/
 
-# Local build output
-/build/
-
-# Local Visual Studio state and helper files
-/.vs/
-/build-client.bat
-/buildtest.bat
+node_modules
+build
+build-client.bat
+/.vs/client/v17/.suo
+/.vs
 /public/main.js
+/buildtest.bat

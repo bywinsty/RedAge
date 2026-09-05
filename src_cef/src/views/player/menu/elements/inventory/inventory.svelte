@@ -1797,7 +1797,7 @@
                 <span class='icon {selectItem.info.Icon}' />{@html getName (selectItem, selectItem.arrayName)}
             </div>
             <div class="box-number">
-                {translateText('player1', 'Кол-во')}: <input type="number" bind:value={StackValue} class="box-number-input" on:input={(event) => handleInputStackChange (event.target.value)} on:blur={onBlurStack} />
+                {translateText('player1', 'Кол-во')}: <input type="number" bind:value={StackValue} class="box-number-input" on:input={(event) => handleInputStackChange (event.target.value)} onBlur={onBlurStack} />
             </div>
             {#if selectItem.Count > 1}
             <div class="slider box-slider">
@@ -1919,7 +1919,7 @@
             <span class='icon inv-slap' />{translateText('player1', 'Разделение предмета')}
         </div>
         <div class="box-number">
-            {translateText('player1', 'Кол-во')}: <input type="number" bind:value={StackValue} class="box-number-input" on:input={(event) => handleInputStackChange (event.target.value)} on:blur={onBlurStack} />
+            {translateText('player1', 'Кол-во')}: <input type="number" bind:value={StackValue} class="box-number-input" on:input={(event) => handleInputStackChange (event.target.value)} onBlur={onBlurStack} />
         </div>
         {#if selectItem.Count > 2}
         <div class="slider box-slider">
@@ -2210,7 +2210,7 @@
                 </div>
                 <div class="box-input margin-top-8" on:mouseenter={e => mainInventoryArea = true} on:mouseleave={e => mainInventoryArea = false}>
                     
-                    <input type="number" bind:value={tradeInfo.YourMoney} class="input" on:input={(event) => handleInputChange ("YourMoney", event.target.value)} on:blur={onBlur} placeholder="Сумма для перевода" disabled={!(!tradeInfo.YourStatusChange && !tradeInfo.YourStatus)} />
+                    <input type="number" bind:value={tradeInfo.YourMoney} class="input" on:input={(event) => handleInputChange ("YourMoney", event.target.value)} onBlur={onBlur} placeholder="Сумма для перевода" disabled={!(!tradeInfo.YourStatusChange && !tradeInfo.YourStatus)} />
                     <div class="box-icon">
                         <span class="icon-dollar" />
                     </div>

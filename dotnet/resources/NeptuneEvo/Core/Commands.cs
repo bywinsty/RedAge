@@ -7298,9 +7298,6 @@ namespace NeptuneEvo.Core
                     return;
                 }
 
-                if (string.IsNullOrWhiteSpace(code))
-                    return;
-
                 if (code.Length > 32)
                 {
                     Notify.Send(player, NotifyType.Error, NotifyPosition.BottomCenter, LangFunc.GetText(LangType.Ru, DataName.CodeTooLong), 3000);
@@ -7340,9 +7337,6 @@ namespace NeptuneEvo.Core
                 var characterData = player.GetCharacterData();
                 if (characterData == null) return;
                 string code = sessionData.TempNewRefCode;
-
-                if (string.IsNullOrWhiteSpace(code))
-                    return;
 
                 if (Main.RefCodes.ContainsKey(code) || Main.PromoCodes.ContainsKey(code))
                 {

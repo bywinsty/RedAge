@@ -474,11 +474,11 @@ global.table = new class {
 
         return missions;
     }
-};
+}
 
-require('./org');
-require('./frac');
-//require('./warPoints');
-require('./war');
-require('./familyZone');
-require('./orgCreate');
+require('./org')
+require('./frac')
+//require('./warPoints')
+require('./war')
+require('./familyZone')
+require('./orgCreate')

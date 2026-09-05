@@ -1,177 +1,106 @@
-const path = require('node:path');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const path = require('path');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const autoprefixer = require('autoprefixer');
 
-const interfacePath = path.resolve(__dirname, '../client_packages/interface');
+const mode = process.env.NODE_ENV || 'development';
+const prod = mode === 'production';
 
-const variants = {
-    main: {
-        outputDirectory: 'build',
-        htmlFilename: 'index.html',
-        publicPath: '',
+const urlPath = `/`
+
+module.exports = {
+    entry: {
+        main: './src/main.js'
     },
-    ru: {
-        outputDirectory: 'buildru',
-        htmlFilename: 'index.ru.html',
-        publicPath: 'https://cdn.ragemp.pro/',
+    resolve: {
+        alias: {
+            "svelte": path.resolve('node_modules', 'svelte'),
+            "@": path.resolve(__dirname, './src'),
+            "api": path.resolve(__dirname, './src/api'),
+            "store": path.resolve(__dirname, './src/store'),
+            "components": path.resolve(__dirname, './src/components'),
+            "router": path.resolve(__dirname, './src/router/index.js'),
+            "json": path.resolve(__dirname, './src/json'),
+            "lang": path.resolve(__dirname, './lang')
+        },
     },
-    en: {
-        outputDirectory: 'builden',
-        htmlFilename: 'index.en.html',
-        publicPath: 'https://cdn.ragemp.pro/',
+    output: {
+        path: path.resolve(__dirname, "./../client_packages/interface"),
+		filename: `build/bundle.js`,
+        libraryTarget: "umd",
     },
-};
-
-const aliases = {
-    '@': path.resolve(__dirname, 'src'),
-    api: path.resolve(__dirname, 'src/api'),
-    store: path.resolve(__dirname, 'src/store'),
-    components: path.resolve(__dirname, 'src/components'),
-    router: path.resolve(__dirname, 'src/router/index.js'),
-    json: path.resolve(__dirname, 'src/json'),
-    lang: path.resolve(__dirname, 'lang'),
-};
-
-function postCssLoader(sourceMap) {
-    return {
-        loader: 'postcss-loader',
-        options: {
-            sourceMap,
-            postcssOptions: {
-                config: false,
-                plugins: [autoprefixer()],
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: "./src/index.html",
+            title: `RedAge - ${new Date()}`,
+            filename: './index.html',
+            inject: false,
+        }),
+        new MiniCssExtractPlugin({ 
+            filename: `build/bundle.css`
+        })
+    ],
+    module: {
+        rules: [
+            {
+				test: /\.svelte$/,
+				use: {
+					loader: 'svelte-loader',
+					options: {
+						hotReload: true
+					}
+				}
             },
-        },
-    };
-}
-
-function cssLoader(sourceMap, importLoaders) {
-    return {
-        loader: 'css-loader',
-        options: {
-            importLoaders,
-            sourceMap,
-        },
-    };
-}
-
-function createConfig(variantName, mode) {
-    const variant = variants[variantName] || variants.main;
-    const production = mode === 'production';
-    const extractCss = MiniCssExtractPlugin.loader;
-    const extractCssOptions = {
-        publicPath: '../',
-    };
-
-    return {
-        context: __dirname,
-        entry: {
-            main: path.resolve(__dirname, 'src/main.js'),
-        },
-        resolve: {
-            alias: aliases,
-            extensions: ['.mjs', '.js', '.svelte'],
-            mainFields: ['svelte', 'browser', '...'],
-            conditionNames: ['svelte', 'browser', '...'],
-        },
-        target: 'browserslist',
-        output: {
-            path: interfacePath,
-            filename: `${variant.outputDirectory}/bundle.js`,
-            publicPath: variant.publicPath,
-            assetModuleFilename: '[path][name][ext]',
-            libraryTarget: 'umd',
-        },
-        plugins: [
-            new HtmlWebpackPlugin({
-                template: path.resolve(__dirname, 'src/index.html'),
-                title: 'RedAge',
-                filename: variant.htmlFilename,
-                inject: 'body',
-                scriptLoading: 'blocking',
-            }),
-            new MiniCssExtractPlugin({
-                filename: `${variant.outputDirectory}/bundle.css`,
-            }),
-        ],
-        module: {
-            rules: [
-                {
-                    test: /\.(svelte|svelte\.js)$/,
-                    exclude: /node_modules/,
-                    use: {
-                        loader: 'svelte-loader',
+            {
+                test: /\.(c|sac|sa|sc)ss$/i,
+                enforce: "pre",
+                use: [
+                    {
+                        loader: MiniCssExtractPlugin.loader, //4. Extract css into files\
                         options: {
-                            compilerOptions: {
-                                dev: !production,
-                                compatibility: {
-                                    componentApi: 4,
-                                },
-                            },
-                            emitCss: production,
-                            hotReload: !production,
-                        },
+                            publicPath: '../', // опускаемся из build директории
+                        }
                     },
-                },
-                {
-                    test: /\.css$/i,
-                    use: [
-                        { loader: extractCss, options: extractCssOptions },
-                        cssLoader(!production, 1),
-                        postCssLoader(!production),
-                    ],
-                },
-                {
-                    test: /\.s[ac]ss$/i,
-                    use: [
-                        { loader: extractCss, options: extractCssOptions },
-                        cssLoader(!production, 2),
-                        postCssLoader(!production),
-                        {
-                            loader: 'sass-loader',
-                            options: {
-                                api: 'modern',
-                                sourceMap: !production,
-                            },
-                        },
-                    ],
-                },
-                {
-                    test: /\.(jpe?g|png|svg|gif)$/i,
-                    type: 'asset/resource',
-                    generator: {
-                        filename: '[path][name][ext]',
+                    "css-loader", { // 3 Turns css into javascript
+                        loader: "postcss-loader", //2. Runs Autoprefixer
+                        options: {
+                            ident: "postcss",
+                            plugins: [require("autoprefixer")]
+                        }
                     },
-                },
-                {
-                    test: /\.(webm|ttf|eot|woff2?|ogg|mp3|wav|mpe?g)(\?[a-z0-9=&.]+)?$/i,
-                    type: 'asset/resource',
-                    generator: {
-                        filename: '[path][name][ext]',
-                    },
-                },
-                {
-                    test: /node_modules[\\/]svelte[\\/].*\.mjs$/,
-                    resolve: {
-                        fullySpecified: false,
-                    },
-                },
-            ],
-        },
-        mode,
-        devtool: production ? false : 'source-map',
-        devServer: {
-            static: false,
-            hot: true,
-            compress: true,
-            port: 8888,
-        },
-    };
+                    "sass-loader" // 1. Turns sass into css
+                ]
+            },
+            {
+                test: /\.(jpe?g|png|svg?|gif)$/i,
+                use: [{
+                    loader: 'file-loader',
+                    options: {
+                        esModule: false,
+                        name: '[path]/[name].[ext]',
+                        publicPath: (url, resourcePath, context) => {
+                            url = url.split('/').filter(x => x).join('/');
+                            return urlPath + url;
+                        }
+                    }
+                }]
+            },
+            {
+                test: /\.(webm|ttf|eot|woff(2)?|ogg|mp3|wav|mpe?g)(\?[a-z0-9=&.]+)?$/,
+                use: [{
+                    loader: 'file-loader',
+                    options: {
+                        name: '[path]/[name].[ext]'
+                    }
+                }]
+			},
+        ]
+    },
+    mode,
+    devtool: prod ? false: 'source-map',
+    devServer: {
+        contentBase: path.join(__dirname, 'dist'),
+		inline: true,
+        compress: true,
+        port: 8888
+    }
 }
-
-module.exports = (env = {}, argv = {}) => {
-    const variantName = typeof env.variant === 'string' ? env.variant : 'main';
-    const mode = argv.mode || process.env.NODE_ENV || 'development';
-    return createConfig(variantName, mode);
-};

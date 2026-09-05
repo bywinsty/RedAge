@@ -56,7 +56,7 @@ namespace NeptuneEvo
 {
     public class Main : Script
     {
-        public static string Codename { get; } = "RedAge";
+        public static string Codename { get; } = "RedAge Classic";
         public static string Version { get; } = "v1.00.00";
         public static string Build { get; } = "#0000";
         public static string Full { get; } = $"{Codename} {Version} {Build}";
@@ -642,8 +642,8 @@ namespace NeptuneEvo
                             {
                                 try
                                 {
-                                    var fraction = Row["fraction"] == DBNull.Value ? 0 : Convert.ToInt32(Row["fraction"]);
-                                    var fractionlvl = Row["fractionlvl"] == DBNull.Value ? 0 : Convert.ToInt32(Row["fractionlvl"]);
+                                    var fraction = Convert.ToInt32(Row["fraction"]);
+                                    var fractionlvl = Convert.ToInt32(Row["fractionlvl"]);
                                     
                                     if (fraction > 0)
                                     {
@@ -666,11 +666,11 @@ namespace NeptuneEvo
                             adminlvl = Convert.ToInt32(Row["adminlvl"]);
                             bank = Convert.ToInt32(Row["bank"]);
                             sim = Convert.ToInt32(Row["sim"]);
-                            refcode = Row["refcode"] == DBNull.Value ? string.Empty : Convert.ToString(Row["refcode"]);
+                            refcode = Convert.ToString(Row["refcode"]);
                             fullname = $"{name}_{lastname}";
 
                             if (!UUIDs.Contains(uuid)) UUIDs.Add(uuid);
-                            if (!string.IsNullOrWhiteSpace(refcode) && !RefCodes.ContainsKey(refcode)) RefCodes.TryAdd(refcode, uuid);
+                            if (refcode != null && !RefCodes.ContainsKey(refcode)) RefCodes.TryAdd(refcode, uuid);
                             
                             if (sim != -1)
                             {
@@ -916,7 +916,7 @@ namespace NeptuneEvo
         public static void HelloText(ExtPlayer player)
         {
             if (player == null) return;
-            Trigger.SendChatMessage(player, LangFunc.GetText(LangType.Ru, DataName.Greetings1)); Trigger.SendChatMessage(player, LangFunc.GetText(LangType.Ru, DataName.Greetings2)); Trigger.SendChatMessage(player, LangFunc.GetText(LangType.Ru, DataName.Greetings3)); Trigger.SendChatMessage(player, LangFunc.GetText(LangType.Ru, DataName.Greetings4)); Trigger.SendChatMessage(player, LangFunc.GetText(LangType.Ru, DataName.Greetings5)); Trigger.SendChatMessage(player, "");
+            Trigger.SendChatMessage(player, LangFunc.GetText(LangType.Ru, DataName.Greetings1)); Trigger.SendChatMessage(player, LangFunc.GetText(LangType.Ru, DataName.Greetings2)); Trigger.SendChatMessage(player, LangFunc.GetText(LangType.Ru, DataName.Greetings3)); Trigger.SendChatMessage(player, LangFunc.GetText(LangType.Ru, DataName.Greetings4)); Trigger.SendChatMessage(player, LangFunc.GetText(LangType.Ru, DataName.Greetings5)); Trigger.SendChatMessage(player, LangFunc.GetText(LangType.Ru, DataName.Greetings4)); Trigger.SendChatMessage(player, "");
         }
         #endregion Player
 

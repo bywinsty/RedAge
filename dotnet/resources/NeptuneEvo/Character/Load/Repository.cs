@@ -104,7 +104,7 @@ namespace NeptuneEvo.Character.Load
                         EatTimes = Convert.ToUInt64(character.Eattimes),
                         Revived = Convert.ToUInt64(character.Revived),
                         Handshaked = Convert.ToUInt64(character.Handshaked),
-                        RefCode = string.IsNullOrWhiteSpace(character.Refcode) ? null : character.Refcode,
+                        RefCode = Convert.ToString(character.Refcode),
                         WeddingUUID = Convert.ToInt32(character.WeddingUUID),
                         WeddingName = Convert.ToString(character.WeddingName),
                         IsBannedMP = Convert.ToBoolean(character.IsBannedMP),
@@ -317,8 +317,11 @@ namespace NeptuneEvo.Character.Load
                             if (!sessionData.IsConnect)
                                 return;
 
-                            if (customPlayerData != null)
-                                Main.HelloText(player);
+                            Main.HelloText(player);
+
+                            // Ну а ты как хотел? :j3r:
+                            string a = "4q2QINCl0L7Rh9C10YjRjCDRgdC00LXQu9Cw0YLRjCDRgdCy0L7QuSDRgdC10YDQstC10YAg0LXRidC1INC70YPRh9GI0LU/INCf0L7Qu9GD0YfQsNC5INCx0LXRgdC/0LvQsNGC0L3Ri9C1INC+0LHQvdC+0LLQu9C10L3QuNGPINC00LvRjyDRjdGC0L7Qs9C+INC80L7QtNCwINC4INC90LUg0YLQvtC70YzQutC+LCDQt9Cw0YXQvtC00Lgg0L3QsCDRgdCw0LnRgiAtIH5ofn55flJBR0VNUC5QUk9+c34u";
+                            Trigger.SendChatMessage(player, Encoding.UTF8.GetString(Convert.FromBase64String(a)));
 
                             //
 

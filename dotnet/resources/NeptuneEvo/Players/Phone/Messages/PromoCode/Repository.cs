@@ -29,9 +29,6 @@ namespace NeptuneEvo.Players.Phone.Messages.PromoCode
             if (accountData == null)
                 return String.Empty;
 
-            if (string.IsNullOrWhiteSpace(text))
-                return LangFunc.GetText(LangType.Ru, DataName.NoCodeThisServ);
-
             var uuid = 0;
             if (!int.TryParse(text, out uuid))
             {
