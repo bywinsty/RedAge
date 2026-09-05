@@ -15,13 +15,13 @@ namespace Localization
             //
             DefaultText = LibraryRu.Data();
             
-            foreach (DataName fruit in Enum.GetValues(typeof(DataName)))
+            foreach (DataName fruit in Enum.GetValues<DataName>())
             {
                 try
                 {
                     LangFunc.GetText(LangType.Ru, fruit, 0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     Console.WriteLine(fruit);
                 }

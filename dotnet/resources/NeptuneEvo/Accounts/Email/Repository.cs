@@ -18,11 +18,11 @@ namespace NeptuneEvo.Accounts.Email
             new Dictionary<string, EmailVerification>();
 
 
-        public static async Task<string> Add(ExtPlayer player, string login, string password, string email, string promo, bool isRegistered = true, int type = 0)
+        public static Task<string> Add(ExtPlayer player, string login, string password, string email, string promo, bool isRegistered = true, int type = 0)
         {
             var sessionData = player.GetSessionData();
             if (sessionData == null) 
-                return String.Empty;
+                return Task.FromResult(String.Empty);
             
             var hash = EmailsVerification
                 .Where(ev => ev.Value.Player == player)
@@ -63,7 +63,7 @@ namespace NeptuneEvo.Accounts.Email
                 IsRegistered = isRegistered
             });
 
-            return hash;
+            return Task.FromResult(hash);
         }
         
         public static void VerificationDelete(ExtPlayer player)
@@ -91,7 +91,7 @@ namespace NeptuneEvo.Accounts.Email
                 */
             }
         }
-        public static async Task VerificationsDelete()
+        public static Task VerificationsDelete()
         {            
             /*
             await using var webSiteBD = new WebSiteBD("WebSiteBD");
@@ -101,6 +101,7 @@ namespace NeptuneEvo.Accounts.Email
                 .Where(vc => vc.ServerId == Main.ServerNumber)
                 .DeleteAsync();
             */
+            return Task.CompletedTask;
         }
         public static EmailVerification GetVerification(string hash, bool isRegistered = true)
         {
@@ -119,7 +120,7 @@ namespace NeptuneEvo.Accounts.Email
             return null;
         }
         
-        public static async Task DeleteToTime()
+        public static Task DeleteToTime()
         {
             var confirms = EmailsVerification
                 .Where(ev => ev.Value.Time < DateTime.Now)
@@ -155,6 +156,7 @@ namespace NeptuneEvo.Accounts.Email
 
             //Trigger.ClientEvent(foreachPlayer, "client.roullete.updateCase", 2);
 
+            return Task.CompletedTask;
         }
     }
 }

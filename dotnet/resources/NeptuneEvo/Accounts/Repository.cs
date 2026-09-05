@@ -42,7 +42,7 @@ namespace NeptuneEvo.Accounts
         public static string GetSha256(string strData)
         {
             byte[] message = Encoding.ASCII.GetBytes(strData);
-            using (SHA256Managed hashString = new SHA256Managed())
+            using (SHA256 hashString = SHA256.Create())
             {
                 string hex = "";
 
